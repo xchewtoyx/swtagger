@@ -41,14 +41,14 @@ def main():
 
     if args.event:
         if db.event_exists(args.event) == False:
-            db.create_event(args.event)
-        eventid = db.get_event(args.event)
+            db.add_event(args.event)
+        eventid = db.get_event(args.event)[0]
         for photo in photos:
             db.set_photo_eventid(photo, eventid)
     
     for tag in args.tags:
         if db.tag_exists(tag):
-            db.tag_add_photoids(photos)
+            db.add_tag_photolist(tag, photos)
         else:
             db.add_tag(tag, photos)
             

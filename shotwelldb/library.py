@@ -39,7 +39,7 @@ class Library:
         """
         c = self.db.cursor()
         c.execute("SELECT id FROM EventTable WHERE name=?", [name])
-        return c.fetchone()[0]
+        return c.fetchone()
 
     def get_eventid(self, id):
         """
